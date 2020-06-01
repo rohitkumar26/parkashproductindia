@@ -1,0 +1,21 @@
+ul li {
+  display: inline;
+}
+ul li a {
+  color: dodgerblue;
+  font-size: 20px;
+  font-weight: 600;
+  margin-right: 3px;
+}
+ul li a:hover {
+  color: white;
+  background-color: dodgerblue;
+  border-radius: 5px;
+  padding: 5px;
+}
+ul {
+  margin-top: 5px;
+}
+#mytitle {
+  text-align: center;
+}

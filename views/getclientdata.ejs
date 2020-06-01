@@ -1,0 +1,41 @@
+<h1 class="title is-1">All Clients</h1>
+<% for(let i=0;i<result.length;i++){ %>
+  <div class="card">
+    <div class="card-content">
+      <p class="title">
+        <%= result[i].name %>
+      </p>
+      <p class="subtitle">
+        <%= result[i].address %>
+      </p>
+    </div>
+    <footer class="card-footer">
+      <p class="card-footer-item">
+        <span>
+          Gstin: <%= result[i].gstin %>
+        </span>
+        <span>&nbsp;&nbsp; State: <%= result[i].state %> </span>
+        <span>&nbsp;&nbsp; Statecode: <%= result[i].statecode %> </span>
+      </p>
+      <p class="card-footer-item">
+        <span>
+          <a
+            href="/clients/editclient/<%=result[i]._id %>"
+            class="button is-link"
+            >Edit</a
+          >
+        </span>
+        &nbsp;&nbsp;
+        <span>
+          <a
+            href="/clients/delete/<%=result[i]._id %>"
+            class="mydel button is-success"
+            >Delete</a
+          >
+        </span>
+      </p>
+    </footer>
+  </div>
+  <% } %></result.length;i++){
+>
+<script src="/js/myapp.js"></script>
