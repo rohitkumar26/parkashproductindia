@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const ejs = require('ejs');
 var expressLayouts = require('express-ejs-layouts');
 var clientroute = require('./routes/clients');
+var invoiceroute = require('./routes/invoices');
 
 
 
@@ -14,6 +15,7 @@ app.use(express.urlencoded()) //for parsing form data in request.
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
 app.use('/clients', clientroute);
+app.use('/invoices', invoiceroute);
 
 //connecting mongodb
 mongoose.connect('mongodb://localhost:27017/rkppindia', { useNewUrlParser: true, useUnifiedTopology: true }).
@@ -23,6 +25,7 @@ mongoose.connect('mongodb://localhost:27017/rkppindia', { useNewUrlParser: true,
 app.get('/', (req, res) => {
     res.render('index');
 })
+
 
 const port = 3000;
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))

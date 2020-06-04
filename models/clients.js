@@ -10,6 +10,6 @@ const clients = new schema({
     state: { type: String, required: true, lowercase: true }
 });
 
-const Client = mongoose.model('Client', clients, 'clients');
+const Client = mongoose.model('client', clients, 'clients');
 
 module.exports = Client;
