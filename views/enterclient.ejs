@@ -1,11 +1,10 @@
-<h1 class="title is-1">Edit Clients Details</h1>
-<form action="/clients/modifiedclient" method="post">
-  <input type="hidden" value="<%= result.id %>" name="id" required />
+<h1 class="title is-1">Enter Clients Details</h1>
+
+<form action="/clients" method="post">
   <input
     type="text"
     class="input"
     name="name"
-    value="<%= result.name %>"
     placeholder="name"
     required
   /><br />
@@ -13,7 +12,6 @@
     type="text"
     class="input"
     name="address"
-    value="<%= result.address %>"
     placeholder="address"
     required
   /><br />
@@ -21,7 +19,6 @@
     type="text"
     class="input"
     name="statecode"
-    value="<%= result.statecode %>"
     placeholder="statecode"
     required
   /><br />
@@ -29,7 +26,6 @@
     type="text"
     class="input"
     name="state"
-    value="<%= result.state %>"
     placeholder="state"
     required
   /><br />
@@ -37,10 +33,9 @@
     type="text"
     class="input"
     name="gstin"
-    value="<%= result.gstin %> "
     placeholder="gstin"
     required
   /><br />
-  <input type="submit" class="button is-link" value="update" />
-  <a href="/clients" class="button is-success" id="editclientcancel"  /> Cancel</a>
+  <input type="submit" class="button is-link" value="submit" />
+  <input type="reset" class="button is-success" value="reset" />
 </form>

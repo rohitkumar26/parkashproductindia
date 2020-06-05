@@ -1,0 +1,78 @@
+<h1 class="title is-1">Edit Invoice Details</h1>
+
+<form action="/invoices/modifiedInvoice" method="post">
+  <input type="hidden" value="<%= result._id %>" name="id" />
+  <input
+    type="number"
+    class="input"
+    name="invoiceid"
+    placeholder="invoice id"
+    value="<%= result.invoiceid %>"
+    required
+  /><br />
+  <input
+    type="date"
+    class="input"
+    value="<%= newdate %>"
+    name="newdate"
+    placeholder="date"
+  /><br />
+  <div class="select">
+    <select name="clients">
+      <option value="">please select name...</option>
+      <% clients.forEach(client=>{ if(result.client.equals(client._id)) {%>
+      <option value="<%= client._id %>" selected><%= client.name %></option>
+      <%} else{ %>
+      <option value="<%= client._id %>"><%= client.name %></option>
+      <% }} )%>
+    </select>
+  </div>
+  <br />
+
+  <% result.items.forEach((el,index)=>{ %>
+  <div class="items">
+    <input
+      type="text"
+      name="items[<%=index %>][name]"
+      value="<%= el.name %>"
+      placeholder="name"
+      required
+    /><input
+      type="number"
+      name="items[<%=index %>][price]"
+      placeholder="price"
+      value="<%= el.price %>"
+      required
+    /><input
+      type="number"
+      name="items[<%=index %>][quantity]"
+      value="<%= el.quantity %>"
+      placeholder="quantity"
+      required
+    />
+    <button class="deleteme">
+      -
+    </button>
+  </div>
+  <br />
+  <%}) %>
+  <button id="additem">
+    +
+  </button>
+  <br />
+  <input
+    type="number"
+    class="input"
+    name="gst"
+    value="<%= result.gst %>"
+    placeholder="gst"
+    id="cgst"
+    required
+  />
+  <br />
+
+  <input type="submit" class="button is-link" value="Update" />
+  <input type="reset" class="button is-success" value="Reset" />
+  <a href="/invoices" id="editinvoicecancel" class="button is-danger">Cancel</a>
+</form>
+<script src="/js/editinvoice.js"></script>

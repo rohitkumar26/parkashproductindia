@@ -1,0 +1,32 @@
+<table class="table is-striped is-fullwidth">
+  <thead>
+    <tr class="has-text-weight-bold">
+      <td>Invoice id</td>
+      <td>Name</td>
+
+      <td>Total payment</td>
+      <td>Actions</td>
+    </tr>
+  </thead>
+  <% result.forEach(el=>{ %>
+  <tr>
+    <td><%=el.invoiceid %></td>
+    <td class="is-capitalized"><%=el.client.name %></td>
+    <% let total=0 ;el.items.map(el=>{ total+=el.price*el.quantity })
+    ;total=Math.round((total/100)*el.gst+ total) %>
+    <td>
+      <%= total %>
+    </td>
+    <td>
+      <a href="/invoices/delete/<%=el._id %>" class="mydel button is-success"
+        >Delete</a
+      >
+      <a href="/invoices/editinvoice/<%=el._id %>" class="button is-link"
+        >Edit</a
+      >
+    </td>
+  </tr>
+
+  <% }) %>
+</table>
+<script src="/js/myapp.js"></script>

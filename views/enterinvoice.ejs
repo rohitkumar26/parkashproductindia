@@ -2,7 +2,7 @@
 
 <form action="/invoices" method="post">
   <input
-    type="text"
+    type="number"
     class="input"
     name="invoiceid"
     placeholder="invoice id"
@@ -17,8 +17,28 @@
     </select>
   </div>
   <br />
-  <input type="number" class="input" name="cgst" placeholder="cgst" /><br />
-  <input type="number" class="input" name="gstin" placeholder="sgst" /><br />
+  <input
+    type="text"
+    name="items[0][name]"
+    placeholder="name"
+    class="items"
+  /><input
+    type="number"
+    name="items[0][price]"
+    placeholder="price"
+    class="items"
+  /><input
+    type="number"
+    name="items[0][quantity]"
+    placeholder="quantity"
+    class="items"
+  /><button id="additem">
+    +</button
+  ><br />
+  <input type="number" class="input" name="gst" placeholder="gst" id="cgst" />
+  <br />
+
   <input type="submit" class="button is-link" value="submit" />
   <input type="reset" class="button is-success" value="reset" />
 </form>
+<script src="/js/invoice.js"></script>

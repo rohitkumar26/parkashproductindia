@@ -1,21 +1,29 @@
 <h1 class="title is-1">All Clients</h1>
+<a href="/clients/clienthomepage">Add new client</a>
 <% for(let i=0;i<result.length;i++){ %>
   <div class="card">
     <div class="card-content">
-      <p class="title">
+      <p class="title is-capitalized">
         <%= result[i].name %>
       </p>
-      <p class="subtitle">
+      <p class="subtitle is-capitalized">
         <%= result[i].address %>
       </p>
     </div>
     <footer class="card-footer">
-      <p class="card-footer-item">
+      <p class="card-footer-item is-uppercase">
         <span>
-          Gstin: <%= result[i].gstin %>
+          <span class="has-text-weight-bold">Gstin:</span> <%= result[i].gstin
+          %>
         </span>
-        <span>&nbsp;&nbsp; State: <%= result[i].state %> </span>
-        <span>&nbsp;&nbsp; Statecode: <%= result[i].statecode %> </span>
+        <span
+          >&nbsp;&nbsp;<span class="has-text-weight-bold"> State: </span><%=
+          result[i].state %>
+        </span>
+        <span
+          >&nbsp;&nbsp; <span class="has-text-weight-bold">Statecode:</span> <%=
+          result[i].statecode %>
+        </span>
       </p>
       <p class="card-footer-item">
         <span>

@@ -3,8 +3,8 @@ var mongoose = require('mongoose');
 const invoiceschema = new mongoose.Schema({
     invoiceid: { type: Number, required: true, lowercase: true, unique: true, trim: true },
     date: { type: Date, default: Date.now() },
-    cgst: { type: Number, required: true },
-    sgst: { type: Number, required: true },
+    gst: { type: Number, required: true },
+
     client: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,

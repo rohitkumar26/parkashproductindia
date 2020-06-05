@@ -23,7 +23,7 @@ mongoose.connect('mongodb://localhost:27017/rkppindia', { useNewUrlParser: true,
     .catch(error => handleError(error));
 
 app.get('/', (req, res) => {
-    res.render('index');
+    res.redirect('invoices/invoicepage');
 })
 
 

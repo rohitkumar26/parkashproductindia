@@ -92,5 +92,8 @@ router.get('/editclient/:id', async (req, res) => {
     }
 
 })
+router.get('/clienthomepage', (req, res) => {
+    res.render('enterclient');
+})
 
 module.exports = router
