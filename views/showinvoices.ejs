@@ -2,6 +2,7 @@
   <thead>
     <tr class="has-text-weight-bold">
       <td>Invoice id</td>
+      <td>Date</td>
       <td>Name</td>
 
       <td>Total payment</td>
@@ -11,6 +12,8 @@
   <% result.forEach(el=>{ %>
   <tr>
     <td><%=el.invoiceid %></td>
+    <td><%=el.date.toDateString() %></td>
+
     <td class="is-capitalized"><%=el.client.name %></td>
     <% let total=0 ;el.items.map(el=>{ total+=el.price*el.quantity })
     ;total=Math.round((total/100)*el.gst+ total) %>

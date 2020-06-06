@@ -5,12 +5,13 @@ const Invoice = require('../models/invoice');
 const Client = require('../models/clients');
 const moment = require('moment');
 router.get('/', async (req, res) => {
-    const result = await Invoice.find({}).populate('client').exec();
+    const result = await Invoice.find({}).sort({ invoiceid: -1 }).populate('client').exec();
+
     res.render('showinvoices', { result });
 })
 router.post('/', async (req, res) => {
     let invoiceid = Number(req.body.invoiceid);
-    let date = Date(req.body.date);
+    let date = new Date(req.body.date);
     let client = req.body.clients;
     let gst = Number(req.body.gst);
     let items = req.body.items.map(el => {
