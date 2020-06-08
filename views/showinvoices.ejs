@@ -11,7 +11,9 @@
   </thead>
   <% result.forEach(el=>{ %>
   <tr>
-    <td><%=el.invoiceid %></td>
+    <td>
+      <a href="/invoices/detailedinvoice/<%= el._id %>"> <%=el.invoiceid %></a>
+    </td>
     <td><%=el.date.toDateString() %></td>
 
     <td class="is-capitalized"><%=el.client.name %></td>

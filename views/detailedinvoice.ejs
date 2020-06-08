@@ -1,0 +1,63 @@
+<div style="margin-top: 20px;">
+  <h1 class="is-capitalized">
+    <span class="has-text-weight-bold">Invoice No:</span> <br /><%=
+    result.invoiceid %>
+  </h1>
+  <h1 class="is-capitalized has-text-weight-bold"><%= result.client.name %></h1>
+  <h2 class="is-capitalized"><%= result.client.address %></h2>
+  <h3 class="is-capitalized">
+    <span class="has-text-weight-bold">State:</span> <br /><%=
+    result.client.state %>
+  </h3>
+  <h3 class="is-capitalized">
+    <span class="has-text-weight-bold">Statecode:<br /></span><%=
+    result.client.statecode %>
+  </h3>
+  <h3 class="is-capitalized">
+    <span class="has-text-weight-bold">Gstin:<br /></span>
+    <span class="is-uppercase"> <%= result.client.gstin %></span>
+  </h3>
+  <h3 class="is-capitalized">
+    <span class="has-text-weight-bold">Date:<br /></span> <%= result.date %>
+  </h3>
+  <hr />
+  <table class="table is-striped is-fullwidth">
+    <thead>
+      <tr class="has-text-weight-bold">
+        <td>Particulars</td>
+        <td>Quantity</td>
+        <td>Price</td>
+        <td>Total</td>
+      </tr>
+    </thead>
+    <% let grandtotal=0;let total=0;result.items.map((el)=>{ %>
+    <tr class="is-capitalized">
+      <td><%=el.name %></td>
+      <td><%=el.quantity %></td>
+      <td><%=el.price %></td>
+      <% total=el.quantity*el.price ;grandtotal+=total%>
+      <td><%= total %></td>
+    </tr>
+    <% }) %>
+    <tr>
+      <td></td>
+      <td></td>
+      <td>Total</td>
+      <td><%= grandtotal %></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td>Gst <%= result.gst %>%</td>
+      <% let gstamount=Math.round((grandtotal*result.gst)/100);
+      grandtotal+=gstamount %>
+      <td><%= gstamount %></td>
+    </tr>
+    <tr class="has-text-weight-bold">
+      <td></td>
+      <td></td>
+      <td>Grand Total</td>
+      <td><%= grandtotal %></td>
+    </tr>
+  </table>
+</div>

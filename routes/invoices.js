@@ -90,4 +90,10 @@ router.get('/invoicepage', async (req, res) => {
         res.send(err);
     }
 })
+
+router.get('/detailedinvoice/:id', async (req, res) => {
+    const result = await Invoice.findOne({ _id: req.params.id }).populate('client').exec();
+
+    res.render('detailedinvoice', { result });
+})
 module.exports = router;

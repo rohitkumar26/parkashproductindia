@@ -5,6 +5,7 @@ const ejs = require('ejs');
 var expressLayouts = require('express-ejs-layouts');
 var clientroute = require('./routes/clients');
 var invoiceroute = require('./routes/invoices');
+var clientpaymentroute = require('./routes/clientpayment');
 
 
 
@@ -16,6 +17,7 @@ app.set('view engine', 'ejs');
 app.use(expressLayouts);
 app.use('/clients', clientroute);
 app.use('/invoices', invoiceroute);
+app.use('/clientpayment', clientpaymentroute);
 
 //connecting mongodb
 mongoose.connect('mongodb://localhost:27017/rkppindia', { useNewUrlParser: true, useUnifiedTopology: true }).
