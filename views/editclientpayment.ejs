@@ -1,0 +1,44 @@
+<h1 class="title is-1">Edit Clients Payments</h1>
+<form action="/clientpayment/modifiedclientpayment" method="post">
+  <input type="hidden" name="id" value="<%= result._id %>" />
+  <div class="select">
+    <select name="client" class="is-capitalized">
+      <option value="">please select name...</option>
+      <% clients.forEach(client=>{ if(result.client.equals(client._id)) {%>
+      <option value="<%= client._id %>" selected><%= client.name %></option>
+      <%} else{ %>
+      <option value="<%= client._id %>"><%= client.name %></option>
+      <% }} )%>
+    </select>
+  </div>
+  <br />
+  <input
+    type="date"
+    class="input"
+    name="date"
+    value="<%= newdate %>"
+    required
+  /><br />
+  <input
+    type="number"
+    class="input"
+    name="payment"
+    placeholder="payment"
+    value="<%= result.payment %>"
+    required
+  /><br />
+  <input
+    type="text"
+    class="input"
+    name="chequeno"
+    placeholder="cheque no "
+    value="<%= result.chequeno %>"
+    required
+  /><br />
+
+  <input type="submit" class="button is-link" value="Update" />
+  <input type="reset" class="button is-success" value="Reset" />
+  <a class="button is-danger" style="margin-top: 5px;" href="/clientpayment"
+    >Cancel</a
+  >
+</form>

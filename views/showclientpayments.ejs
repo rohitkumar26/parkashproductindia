@@ -1,0 +1,42 @@
+<a
+  class="button is-primary is-outlined has-text-weight-bold"
+  href="/clientpayment/enterpayment"
+  >{ Add New Payments }</a
+>
+<hr />
+<table class="table is-striped is-fullwidth">
+  <thead>
+    <tr class="has-text-weight-bold">
+      <td>Sno</td>
+      <td>Date</td>
+      <td>Name</td>
+      <td>Payment</td>
+      <td>Cheque No</td>
+      <td>Actions</td>
+    </tr>
+  </thead>
+  <%let counter=1; result.map((el)=>{ %>
+  <tr class="is-capitalized">
+    <td><%=counter %></td>
+    <td><%= el.date.toDateString() %></td>
+    <td><%= el.client.name %></td>
+    <td><%= el.payment %></td>
+    <td><%= el.chequeno %></td>
+    <td>
+      <a
+        class="button is-link"
+        href="/clientpayment/editclientpayment/<%= el._id%>"
+        >Edit</a
+      >
+
+      <a
+        class="mydel button is-success"
+        href="/clientpayment/delete/<%= el._id%>"
+        >Delete</a
+      >
+    </td>
+  </tr>
+
+  <% counter++ ;}) %>
+</table>
+<script src="/js/myapp.js"></script>

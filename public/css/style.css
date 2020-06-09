@@ -49,6 +49,7 @@ input[type="number"] {
   border-radius: 7px;
 }
 #editinvoicecancel,
-#editclientcancel {
+#editclientcancel,
+#editclientpaymentcancel {
   margin-top: 5px;
 }

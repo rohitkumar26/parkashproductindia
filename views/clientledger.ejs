@@ -1,0 +1,40 @@
+<form action="/clientpayment/ledger" method="get">
+  <div class="field has-addons">
+    <div class="control is-expanded">
+      <div class="select is-fullwidth">
+        <select name="client" class="is-capitalized" required>
+          <option value="">Please select name....</option>
+          <% clients.map(cl=>{ %>
+          <option value="<%= cl._id %>"><%= cl.name %></option>
+          <% }) %>
+        </select>
+      </div>
+    </div>
+    <div class="control">
+      <button type="submit" class="button is-primary">Choose</button>
+    </div>
+  </div>
+</form>
+<hr />
+
+<% if(clientflag===1) {%>
+<h1 class="title is-3 is-capitalized has-text-centered"><%= clientname %></h1>
+<table class="table is-striped is-fullwidth">
+  <thead>
+    <tr class="has-text-weight-bold">
+      <td>Date</td>
+      <td>Cheque No</td>
+      <td>Type</td>
+      <td>Payment</td>
+    </tr>
+  </thead>
+  <% result.map(el=>{ %>
+  <tr class="is-capitalized">
+    <td><%= el.date.toDateString() %></td>
+    <td><%= el.chequeno %></td>
+    <td><%= el.type %></td>
+    <td><%= el.payment %></td>
+  </tr>
+  <% }) %>
+</table>
+<% }%>
