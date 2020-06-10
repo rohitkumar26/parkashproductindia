@@ -79,7 +79,7 @@ router.post('/modifiedInvoice', totalpayment, async (req, res) => {
     }
     try {
         let updatedinvoice = await Invoice.updateOne({ _id: id }, { $set: newinvoice }, { new: true });
-        let updateclientpayment = await ClientPayment.updateOne({ invoiceid: invoiceid }, { $set: updatedclientpayment }, { new: true });
+        let updateclientpayment = await ClientPayment.updateOne({ invoiceid: invoiceid }, { $set: updatedclientpayment }, { new: true, upsert: true });
         res.redirect('/invoices');
     }
     catch (err) {

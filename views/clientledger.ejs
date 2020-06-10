@@ -28,13 +28,22 @@
       <td>Payment</td>
     </tr>
   </thead>
-  <% result.map(el=>{ %>
+  <% let credit=0,debit=0; %> <% result.map(el=>{ %>
   <tr class="is-capitalized">
     <td><%= el.date.toDateString() %></td>
     <td><%= el.chequeno %></td>
     <td><%= el.type %></td>
+
+    <%if(el.type==='credit'){credit+=el.payment}else{debit+=el.payment} %>
     <td><%= el.payment %></td>
   </tr>
-  <% }) %>
+  <% }) %> <%let balance =credit-debit; %>
+  <tr class="has-text-weight-bold">
+    <td></td>
+    <td></td>
+    <td>Balance</td>
+    <td><%= balance %></td>
+  </tr>
 </table>
+
 <% }%>
