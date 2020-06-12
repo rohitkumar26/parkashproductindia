@@ -7,7 +7,8 @@
   />
   <input type="submit" value="search" />
 </form>
-<table class="table is-striped is-fullwidth">
+<!-- <table class="table is-striped is-fullwidth"> -->
+<table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
   <thead>
     <tr class="has-text-weight-bold">
       <td>Invoice id</td>
@@ -32,12 +33,19 @@
       <%= total %>
     </td>
     <td>
-      <a href="/invoices/delete/<%=el._id %>" class="mydel button is-success"
+      <!-- <a href="/invoices/delete/<%=el._id %>" class="mydel button is-success"
         >Delete</a
-      >
-      <a href="/invoices/editinvoice/<%=el._id %>" class="button is-link"
+      > -->
+      <a href="/invoices/delete/<%=el._id %> " class="mydel"
+        ><i class="fa fa-trash" aria-hidden="true"></i
+      ></a>
+      <!-- <a href="/invoices/editinvoice/<%=el._id %>" class="button is-link"
         >Edit</a
-      >
+      > -->
+
+      <a href="/invoices/editinvoice/<%=el._id %>"
+        ><i class="fa fa-edit"></i
+      ></a>
     </td>
   </tr>
 

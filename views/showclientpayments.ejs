@@ -15,7 +15,7 @@
 
   <input type="submit" value="search" />
 </form>
-<table class="table is-striped is-fullwidth">
+<table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
   <thead>
     <tr class="has-text-weight-bold">
       <td>Sno</td>
@@ -34,7 +34,7 @@
     <td><%= el.payment %></td>
     <td><%= el.chequeno %></td>
     <td>
-      <a
+      <!-- <a
         class="button is-link"
         href="/clientpayment/editclientpayment/<%= el._id%>"
         >Edit</a
@@ -44,7 +44,13 @@
         class="mydel button is-success"
         href="/clientpayment/delete/<%= el._id%>"
         >Delete</a
-      >
+      > -->
+      <a href="/clientpayment/delete/<%= el._id%>" class="mydel"
+        ><i class="fa fa-trash" aria-hidden="true"></i
+      ></a>
+      <a href="/clientpayment/editclientpayment/<%= el._id%>"
+        ><i class="fa fa-edit"></i
+      ></a>
     </td>
   </tr>
 
