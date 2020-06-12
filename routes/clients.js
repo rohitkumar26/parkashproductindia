@@ -6,7 +6,7 @@ const Client = require('../models/clients');
 
 router.get('/', async (req, res) => {
     try {
-        let result = await Client.find();
+        let result = await Client.find(req.query);
         // console.log(result);
 
         // res.json(result);

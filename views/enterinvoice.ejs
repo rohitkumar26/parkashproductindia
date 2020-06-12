@@ -6,9 +6,16 @@
     class="input"
     name="invoiceid"
     placeholder="last invoice id no: <%= lastinvoiceid %>"
+    required
   /><br />
-  <input type="date" class="input" name="date" placeholder="date" /><br />
-  <div class="select">
+  <input
+    type="date"
+    class="input"
+    name="date"
+    placeholder="date"
+    required
+  /><br />
+  <div class="select" required>
     <select name="clients" class="is-capitalized">
       <option value="">please select name...</option>
       <% clients.forEach((client)=>{ %>
@@ -16,26 +23,39 @@
       <% } )%>
     </select>
   </div>
+  <a href="/clients/clienthomepage" class="button is-primary is-outlined"
+    >Add new client</a
+  >
   <br />
   <input
     type="text"
     name="items[0][name]"
     placeholder="name"
     class="items"
+    required
   /><input
     type="number"
     name="items[0][price]"
     placeholder="price"
     class="items"
+    required
   /><input
     type="number"
     name="items[0][quantity]"
     placeholder="quantity"
     class="items"
+    required
   /><button id="additem">
     +</button
   ><br />
-  <input type="number" class="input" name="gst" placeholder="gst" id="cgst" />
+  <input
+    type="number"
+    class="input"
+    name="gst"
+    placeholder="gst"
+    id="cgst"
+    required
+  />
   <br />
 
   <input type="submit" class="button is-link" value="submit" />

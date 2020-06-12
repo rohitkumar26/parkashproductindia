@@ -1,4 +1,6 @@
 <form action="/clientpayment/ledger" method="get">
+  <input type="hidden" name="startdate" value="0" />
+  <input type="hidden" name="enddate" value="0" />
   <div class="field has-addons">
     <div class="control is-expanded">
       <div class="select is-fullwidth">
@@ -18,6 +20,13 @@
 <hr />
 
 <% if(clientflag===1) {%>
+<form action="/clientpayment/ledger" method="GET">
+  <input type="hidden" name="client" value="<%= clientid%>" />
+  <input type="date" name="startdate" required />
+  <input type="date" name="enddate" required />
+  <input type="submit" value="search" />
+</form>
+
 <h1 class="title is-3 is-capitalized has-text-centered"><%= clientname %></h1>
 <table class="table is-striped is-fullwidth">
   <thead>

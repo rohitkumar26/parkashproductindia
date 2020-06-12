@@ -1,5 +1,10 @@
 <h1 class="title is-1">All Clients</h1>
-<a href="/clients/clienthomepage">Add new client</a>
+<a href="/clients/clienthomepage" class="button is-danger">Add new client</a>
+<form action="/clients" method="GET">
+  <input type="text" name="gstin" placeholder="Enter Gstin no" required />
+  <input type="submit" value="search" />
+</form>
+
 <% for(let i=0;i<result.length;i++){ %>
   <div class="card">
     <div class="card-content">

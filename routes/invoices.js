@@ -6,7 +6,8 @@ const Client = require('../models/clients');
 const ClientPayment = require('../models/clientpayment');
 const moment = require('moment');
 router.get('/', async (req, res) => {
-    const result = await Invoice.find({}).sort({ invoiceid: -1 }).populate('client').exec();
+    //console.log(req.query);
+    const result = await Invoice.find(req.query).sort({ invoiceid: -1 }).populate('client').exec();
 
     res.render('showinvoices', { result });
 })
