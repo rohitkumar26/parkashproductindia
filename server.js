@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const ejs = require('ejs');
+var path = require('path');
 var expressLayouts = require('express-ejs-layouts');
 var clientroute = require('./routes/clients');
 var invoiceroute = require('./routes/invoices');
@@ -14,6 +15,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(express.json());
 app.use(express.urlencoded()) //for parsing form data in request.
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 app.use(expressLayouts);
 
 app.use('/clients', clientroute);
