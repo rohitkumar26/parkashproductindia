@@ -30,7 +30,7 @@ mongoose.connect(mongodburi, { useNewUrlParser: true, useUnifiedTopology: true }
 
 app.get('/', (req, res) => {
     // res.redirect('/invoices/invoicepage');
-    res.send({ name: rohit });
+    res.send({ name: 'rohit' });
 })
 
 
