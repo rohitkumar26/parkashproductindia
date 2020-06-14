@@ -118,7 +118,7 @@ router.get('/invoicepage', async (req, res) => {
     try {
         let clients = await Client.find({}, { name: 1 }).exec();
         let lastinvoiceid = await Invoice.findOne({}, { invoiceid: 1 }).sort({ invoiceid: -1 }).exec();
-        res.render('enterinvoice', { clients, lastinvoiceid: lastinvoiceid.invoiceid })
+        res.render('/enterinvoice', { clients, lastinvoiceid: lastinvoiceid.invoiceid })
     }
     catch (err) {
 
