@@ -26,7 +26,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/rkppindia
     .catch(error => handleError(error));
 
 app.get('/', (req, res) => {
-    res.redirect('invoices/invoicepage');
+    res.redirect('/invoices/invoicepage');
 })
 
 
