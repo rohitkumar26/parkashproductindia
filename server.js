@@ -23,7 +23,7 @@ app.use('/clientpayment', clientpaymentroute);
 //connecting mongodb
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/rkppindia', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(res => console.log("Database connected..."))
-    .catch(error => handleError(error));
+    .catch(error => console.log(err));
 
 app.get('/', (req, res) => {
     res.redirect('/invoices/invoicepage');
