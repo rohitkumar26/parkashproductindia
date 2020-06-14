@@ -15,6 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded()) //for parsing form data in request.
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
+
 app.use('/clients', clientroute);
 app.use('/invoices', invoiceroute);
 app.use('/clientpayment', clientpaymentroute);

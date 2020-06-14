@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 //my models
 var ClientPayment = require('../models/clientpayment');
 const Client = require('../models/clients');
-//npm module moment
+//helpers
 const moment = require('moment');
 //middleware
 const { typecheckingpayment, datequerystr } = require('../middleware/clientpayment');

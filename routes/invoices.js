@@ -1,27 +1,27 @@
 var express = require('express')
 var router = express.Router()
 const mongoose = require('mongoose');
+//mymodels
 const Invoice = require('../models/invoice');
 const Client = require('../models/clients');
 const ClientPayment = require('../models/clientpayment');
+//middleware
+const { totalpayment } = require('../middleware/invoice');
+//helpers
 const moment = require('moment');
+var json2xls = require('json2xls');
+router.use(json2xls.middleware);
+//my global route variable
+let excelresult;
+
 router.get('/', async (req, res) => {
-    //console.log(req.query);
+
     const result = await Invoice.find(req.query).sort({ invoiceid: -1 }).populate('client').exec();
 
+    excelresult = result;
     res.render('showinvoices', { result });
 })
-let totalpayment = (req, res, next) => {
-    let itemstotals = req.body.items.map(el => {
-        return Number(el.price) * Number(el.quantity);
-    })
-    let itemtotal = itemstotals.reduce((total, val) => total + val);
-    let grandtotal = itemtotal + Math.round((itemtotal * Number(req.body.gst) / 100));
-    req.body.grandtotal = grandtotal;
-    req.body.paymenttype = 'credit';
 
-    next();
-}
 router.post('/', totalpayment, async (req, res) => {
     let invoiceid = Number(req.body.invoiceid);
     let date = new Date(req.body.date);
@@ -110,7 +110,7 @@ router.get('/editinvoice/:id', async (req, res) => {
         })
     }
     catch (err) {
-        console.log(err);
+
         res.send(err);
     }
 })
@@ -121,7 +121,7 @@ router.get('/invoicepage', async (req, res) => {
         res.render('enterinvoice', { clients, lastinvoiceid: lastinvoiceid.invoiceid })
     }
     catch (err) {
-        console.log(err);
+
         res.send(err);
     }
 })
@@ -131,4 +131,29 @@ router.get('/detailedinvoice/:id', async (req, res) => {
 
     res.render('detailedinvoice', { result });
 })
+
+router.get('/downloadexcel', async function (req, res) {
+
+    // const result = await Invoice.find(req.query).sort({ invoiceid: -1 }).populate({ path: 'client', select: 'name' }).exec();
+    const result = excelresult;
+    let finalresult = [];
+    result.forEach(el => {
+        let itemstotals = el.items.map(el => {
+            return Number(el.price) * Number(el.quantity);
+        })
+        let itemtotal = itemstotals.reduce((total, val) => total + val);
+        let grandtotal = itemtotal + Math.round((itemtotal * Number(el.gst) / 100));
+        finalresult = [...finalresult, {
+            invoiceid: el.invoiceid,
+            date: el.date.toDateString(),
+            name: el.client.name,
+            totalpayment: grandtotal
+        }]
+    })
+
+
+
+    res.xls('data.xlsx', finalresult);
+});
+
 module.exports = router;
