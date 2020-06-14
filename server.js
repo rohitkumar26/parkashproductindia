@@ -15,7 +15,6 @@ app.use(express.static(__dirname + '/public'));
 app.use(express.json());
 app.use(express.urlencoded()) //for parsing form data in request.
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views/'));
 app.use(expressLayouts);
 
 app.use('/clients', clientroute);
@@ -29,8 +28,8 @@ mongoose.connect(mongodburi, { useNewUrlParser: true, useUnifiedTopology: true }
     .catch(error => console.log(err));
 
 app.get('/', (req, res) => {
-    // res.redirect('/invoices/invoicepage');
-    res.send({ name: 'rohit' });
+    res.redirect('/invoices/invoicepage');
+
 })
 
 
