@@ -29,8 +29,6 @@ app.get('/', (req, res) => {
     res.redirect('invoices/invoicepage');
 })
 
-const host = '0.0.0.0';
+
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, host, function () {
-    console.log("Server started......." + PORT);
-});
+app.listen(PORT, () => console.log(`Listening on ${PORT}`));
