@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const ejs = require('ejs');
+const process = require('process');
 var expressLayouts = require('express-ejs-layouts');
 var clientroute = require('./routes/clients');
 var invoiceroute = require('./routes/invoices');
@@ -21,7 +22,7 @@ app.use('/invoices', invoiceroute);
 app.use('/clientpayment', clientpaymentroute);
 
 //connecting mongodb
-mongoose.connect('mongodb://localhost:27017/rkppindia', { useNewUrlParser: true, useUnifiedTopology: true }).
+mongoose.connect(process.env.MONGODBURI || 'mongodb://localhost:27017/rkppindia', { useNewUrlParser: true, useUnifiedTopology: true }).
     then(res => console.log("Database connected..."))
     .catch(error => handleError(error));
 
@@ -30,5 +31,5 @@ app.get('/', (req, res) => {
 })
 
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
