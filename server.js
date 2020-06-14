@@ -29,7 +29,8 @@ mongoose.connect(mongodburi, { useNewUrlParser: true, useUnifiedTopology: true }
     .catch(error => console.log(err));
 
 app.get('/', (req, res) => {
-    res.redirect('/invoices/invoicepage');
+    // res.redirect('/invoices/invoicepage');
+    res.send({ name: rohit });
 })
 
 
