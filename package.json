@@ -18,7 +18,7 @@
     "express-ejs-layouts": "^2.5.0",
     "js-alert": "^1.0.4",
     "json2xls": "^0.1.2",
-    "moment": "^2.26.0",
+    "moment": "^2.29.2",
     "mongoose": "^5.9.15"
   }
 }
